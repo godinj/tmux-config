@@ -1,0 +1,46 @@
+#!/bin/zsh                                                                                                   
+
+CURR1_SESSION_NAME="ECP-ES"
+tmux has-session -t $CURR1_SESSION_NAME &> /dev/null
+if [ $? != 0 ]
+     then
+             tmux new-session -s $CURR1_SESSION_NAME -n script -d
+                 tmux send-keys -t $CURR1_SESSION_NAME.0 "cd ~/workplace/ECP-ES/src/EeylopsService" ENTER
+fi
+
+CURR2_SESSION_NAME="RNDV"
+tmux has-session -t $CURR2_SESSION_NAME &> /dev/null
+if [ $? != 0 ]
+     then
+             tmux new-session -s $CURR2_SESSION_NAME -n script -d
+                 tmux send-keys -t $CURR2_SESSION_NAME.0 "cd ~/workplace/RNDV/src/RexNotificationsDatapathViews" ENTER
+fi
+
+DD_SESSION_NAME="DD"
+tmux has-session -t $DD_SESSION_NAME &> /dev/null
+if [ $? != 0 ] 
+ then
+    tmux new-session -s $DD_SESSION_NAME -n script -d
+    tmux send-keys -t $DD_SESSION_NAME.0 "kinit -f && mwinit && dd" ENTER
+fi
+
+NINJA_SESSION_NAME="NINJA"
+tmux has-session -t $NINJA_SESSION_NAME &> /dev/null
+if [ $? != 0 ] 
+ then
+    tmux new-session -s $NINJA_SESSION_NAME -n script -d
+    tmux send-keys -t $NINJA_SESSION_NAME.0 "ninja-dev-sync" ENTER
+fi
+
+VIM_SESSION_NAME="VIM"
+tmux has-session -t $VIM_SESSION_NAME &> /dev/null
+if [ $? != 0 ] 
+ then
+    tmux new-session -s $VIM_SESSION_NAME -n script -d
+    tmux send-keys -t $VIM_SESSION_NAME.0 "vim" ENTER
+fi
+
+if [ -z "$TMUX" ]
+ then
+    tmux attach -t $CURR1_SESSION_NAME
+fi
