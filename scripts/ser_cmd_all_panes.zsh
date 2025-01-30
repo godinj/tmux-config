@@ -15,9 +15,8 @@ n_cmd="$cmd; $unlock"
 
 eval $unlock
 eval $cmd
-eval $hold
 for ((i = 1; i < $n_pane; i++)); do 
   pane="$sess.$i";
-  tmux send-keys -t $pane $n_cmd Enter\;
-  eval $hold
+  tmux wait-for -L $lock\; \
+    send-keys -t $pane $n_cmd Enter\;
 done

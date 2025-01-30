@@ -32,15 +32,14 @@ fi
 
 lock="$sess-$win"
 
-hold="tmux wait-for -L $lock"
+# hold="tmux wait-for -L $lock"
 unlock="tmux wait-for -U $lock"
 
 eval $unlock
 eval ${lines_array[1]}
-eval $hold
 for ((i = 1; i < $n_pane; i++)); do 
-  pane="$sess.$i";
+  pane="$sess.$i"; 
   n_cmd="${lines_array[i + 1]}; $unlock"
-  tmux send-keys -t $pane $n_cmd Enter\;
-  eval $hold
+  tmux wait-for -L $lock\; \
+    send-keys -t $pane $n_cmd Enter\;
 done
