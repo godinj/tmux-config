@@ -29,10 +29,9 @@ for ((i = 1; i < $n_lines; i++)); do
 done
 tmux select-layout even-vertical
 
-lock="$sess-$win"
+lock="${sess// /_}-$win"
 
-eval "cd ${lines_array[1]}"
-for ((i = 1; i < $n_lines; i++)); do 
+for ((i = 0; i < $n_lines; i++)); do 
   pane="$sess.$i";
   n_cmd="cd ${lines_array[i + 1]}"
   tmux send-keys -t $pane $n_cmd Enter\;

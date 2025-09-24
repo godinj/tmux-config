@@ -1,3 +1,3 @@
-$HOME/workplace/$RNDV_D/src/RexNotificationsDatapathViewsPantherTranslation
-$HOME/workplace/$RNDV_D/src/RexNotificationsDatapathViews
-$HOME/workplace/$RNDV_D/src/DatapathQueryLauncher
+$HOME/workplace/RNDV3/src/RexNotificationsDatapathViewsPantherTranslation
+$HOME/workplace/RNDV3/src/RexNotificationsDatapathViews
+$HOME/workplace/RNDV3/src/DatapathQueryLauncher

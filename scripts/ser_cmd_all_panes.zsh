@@ -2,7 +2,7 @@
 
 sess=$(tmux display-message -p '#S')
 win=$(tmux display-message -p '#I')
-lock="$sess-$win"
+lock="${sess// /_}-$win"
 
 n_pane=$(tmux list-panes | wc -l | xargs)
 

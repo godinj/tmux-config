@@ -7,8 +7,6 @@ combined="$cmd \"$args\""
 sess=$(tmux display-message -p '#S')
 o_pane=$(tmux display-message -p '#{pane_index}')
 
-
-n_cmd="$combined; eval $unlock"
 re_sel="tmux select-pane -t $o_pane"
 
 tmux send-keys -t "$sess.0" "$n_cmd; $re_sel" Enter

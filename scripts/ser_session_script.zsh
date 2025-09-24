@@ -11,6 +11,7 @@ if [ -z "$file" ]; then
 fi
 
 # file="$(echo $sess | cut -c 3-).txt"
+# echo "debug file: $file"
 
 INPUT_FILE="$HOME/tmux-config/scripts/sess_cmd/$file"
 
@@ -30,10 +31,12 @@ if [[ $n_pane -lt $n_lines ]]; then
   exit 1
 fi
 
-lock="$sess-$win"
+# echo "debug new ${sess// /_}"
+lock="${sess// /_}-$win"
 
 # hold="tmux wait-for -L $lock"
 unlock="tmux wait-for -U $lock"
+# echo "debug lock: $lock"
 
 eval $unlock
 eval ${lines_array[1]}
